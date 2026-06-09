@@ -13,6 +13,8 @@
     name: mongod
     state: started
     enabled: yes
+    tags:
+      - restart
 
 - name: replace the content
   replace:
