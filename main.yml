@@ -1,8 +1,8 @@
-- name: configure "{{ component }}" server
-  hosts: "{{ component }}"
+- name: configure #"{{ component }}" server
+  hosts: localhost    #"{{ component }}"
   become: yes
 
   roles:
-    - "{{ component }}"
+    - mongodb #"{{ component }}"
 
 
