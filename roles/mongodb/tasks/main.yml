@@ -1,0 +1,23 @@
+- name: copy mongo.repo
+  copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: install mongo-orb
+  dnf:
+    name: mongodb-org
+    state: present
+
+- name: service enable ans start
+  service:
+    name: mongod
+    state: started
+    enabled: yes
+
+- name: replace the content
+  replace:
+    path: /etc/mongod.conf
+    regexp: "127.0.0.1"
+    replace: "0.0.0.0"
+  notify:
+    - restart mongod
